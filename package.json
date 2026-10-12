@@ -1,0 +1,24 @@
+{
+  "name": "koto",
+  "version": "1.0.0",
+  "description": "Je suis étudiant ou une personne qui accumule des objets au fil du temps : Des livres, du materiel scolaire, vêtements, meubles, ou tout autre objet que je n'utilise plus, souvent ces objets prennent de la place inutilement alors qu'ils pourraient être utiles à quelqu'un d'autre.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DentLacuel/Koto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DentLacuel/Koto/issues"
+  },
+  "homepage": "https://github.com/DentLacuel/Koto#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
