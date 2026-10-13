@@ -43,3 +43,13 @@ J'ai choisi PostgreSQL car c'est un système qui permettra de gérer des relatio
 - Effectuer des recherches et filtrer les annonces selon différents critères.
 
 Le choix de PostgreSQL me permettra d'apprendre SQL et principes de conception d'une base de donnée relationnelle pour mon projet.
+
+# Alternatives :
+
+SuperBase : Pour la gestion de backend, un outil très puissant que je peux consider plutad.
+
+React.js : Une bibliothèque JavaScript utile pour construire des interfaces UI, problème c'est la contrainte de temps + un autre outil a apprendre.
+
+Tailwind CSS : Une collection de classes CSS pour donner un style élégant au site web. Un autre framework qui lourd nécessite des fois un autre framework comme React.js pour minimiser les classes dupliquées.
+
+
