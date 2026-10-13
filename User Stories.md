@@ -1,6 +1,12 @@
-### User Stories:
+## User Stories:
 
-# October 07 2026.
+### October 07 2026.
+
+### Qui sont les utilisateurs et quel est le problème à résoudre:
+
+Les personnes ciblées sont avant tout les membres de la communauté étudiante, mais la plateforme est également ouverte à toute personne souhaitant acheter, vendre ou donner des biens tels que des meubles, des manuels scolaires, des vêtements ou du matériel électronique. Il est même possible d'y promouvoir des services de soutien ou de tutorat dans une matière donnée.
+
+Le problème que Koto cherche à résoudre ne réside pas dans le manque de marketplace, mais plutôt dans leur caractère très généraliste. Contrairement aux autres plateformes où il est possible de publier tout et n'importe quoi, Koto a été conçu pour rassembler une communauté précise autour de besoins et d'intérêts communs. La plateforme met ainsi l'accent sur un public ciblé, principalement étudiant, afin de faciliter les échanges pertinents et de créer un environnement plus adapté à ses utilisateurs.
 
 
 # Compte utilisateur
