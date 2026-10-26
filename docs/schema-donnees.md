@@ -57,8 +57,8 @@ CREATE TABLE listings(
 *Les contraintes:*
 
 - user_id est obligatoire, on ne peut pas mettre en vente/donner un objet sans compte.
-- titre.
-- description.
+- avoir un titre.
+- avoir une description.
 - prix ne peut pas être négatif, si l'objet est à donner, le prix devra etre 0.
 - l'ondroit où se trouve l'objet (au moins la région ou la ville)
 - date de création de l'annonce/ transaction.
