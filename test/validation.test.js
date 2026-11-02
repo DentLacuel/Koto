@@ -4,6 +4,8 @@ const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const {validerAnnonce} = require('../validation');
 
+
+// Annonce complète
 test('Annonce valide. Acceptée!', () => {
     const annonce = {
         title: 'manuel Les lois du travail édition 2025',
@@ -17,6 +19,7 @@ test('Annonce valide. Acceptée!', () => {
     assert.equal(validerAnnonce(annonce), true);
 });
 
+// Prix négative
 test('Annonce avec prix négatif. Rejetée!', () => {
     const annonce = {
         title: `Principes de l'économie 4e édition 'Neuf!'`,
@@ -31,6 +34,7 @@ test('Annonce avec prix négatif. Rejetée!', () => {
 
 });
 
+// Manque titre
 test('Annonce sans titre. Rejetée!', () => {
     const annonce = {
         title: '',
@@ -44,3 +48,16 @@ test('Annonce sans titre. Rejetée!', () => {
     assert.equal(validationAnnonce(annonce), false);
 });
 
+// Manque localisation
+test('Annonce sans localisation. Rejetée1', () => {
+    const annonce ={
+        title: 'Programmer avec C# édition 7',
+        description: 'Manuel comme neuf, jamais utilisé',
+        price: 45,
+        location: '',
+        user_id: 1,
+        category_id: 1
+    }
+    
+    assert.equal(validationAnnonce(annonce), false);
+});
