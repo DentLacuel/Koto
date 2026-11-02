@@ -8,7 +8,8 @@ function validerAnnonce(annonce){
         !annonce.location ||
         typeof annonce.price !== 'number' ||
         !Number.isFinite(annonce.price) ||
-        annonce.price < 0 ||
+        annonce.price < 0 || 
+        annonce.price > 9999.99 ||
         !Number.isInteger(annonce.user_id) ||
         annonce.user_id <= 0 ||
         !Number.isInteger(annonce.category_id) ||
