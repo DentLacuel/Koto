@@ -4,6 +4,7 @@
   "description": "Je suis étudiant ou une personne qui accumule des objets au fil du temps : Des livres, du materiel scolaire, vêtements, meubles, ou tout autre objet que je n'utilise plus, souvent ces objets prennent de la place inutilement alors qu'ils pourraient être utiles à quelqu'un d'autre.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node --test"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/DentLacuel/Koto#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "dotenv": "^18.0.9",
     "express": "^5.3.0",
     "pg": "^8.23.1"
