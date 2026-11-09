@@ -1,7 +1,7 @@
 
 const express = require('express');
 const pool = require('./config/database');
-
+const supabase = require('./config/supabase');
 const app = express();
 
 app.use(express.json());
@@ -15,24 +15,32 @@ app.get('/', (req, res) => {
 });
 
 
-// route pour tester la connexion psql avec Render
-app.get('/api/db-test', async (req, res) => {
+app.get('/api/storage-test', async (req, res) => {
     try {
-        const result = await pool.query(
-            'SELECT current_database() AS database'
+        const { data, error } = await supabase.storage.listBuckets();
+
+        if (error) {
+            throw error;
+        }
+
+        const bucketExists = data.some(
+            bucket => bucket.name === 'koto-listings'
         );
 
-        res.json({
-            success: true,
-            message: 'Connexion PostgreSQL réussie!',
-            data: result.rows[0]
+        res.status(bucketExists ? 200 : 404).json({
+            success: bucketExists,
+            message: bucketExists
+                ? 'Accès à Supabase Storage réussi. Bucket trouvé!'
+                : 'Connexion réussie, mais le bucket est introuvable.',
+            bucketExists
         });
+
     } catch (error) {
-        console.error('Erreur PostgreSQL:', error.message);
+        console.error('Erreur Supabase Storage :', error.message);
 
         res.status(500).json({
             success: false,
-            message: 'Connexion PostgreSQL impossible.'
+            message: "Impossible d'accéder à Supabase Storage."
         });
     }
 });
