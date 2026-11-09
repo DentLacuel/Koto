@@ -1,0 +1,122 @@
+
+/* Conteneur principal */
+.discover-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* En-tête */
+.discover-header {
+    margin-bottom: 30px;
+}
+
+.discover-header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.discover-header p {
+    color: #666;
+}
+
+/* Filtres */
+.discover-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.discover-filters input,
+.discover-filters select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.discover-filters input {
+    flex: 1;
+}
+
+.discover-filters select {
+    min-width: 200px;
+}
+
+/* Grille des annonces */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 24px;
+}
+
+/* Carte d'annonce */
+.listing-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+.listing-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+/* Informations */
+.listing-info {
+    padding: 16px;
+}
+
+.listing-info h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.listing-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.listing-category,
+.listing-location {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .discover-filters {
+        flex-direction: column;
+    }
+
+    .discover-filters select {
+        min-width: 100%;
+    }
+
+    .discover-container {
+        padding: 25px 16px;
+    }
+}
+
+/* le placeholder pour image*/
+.listing-image-placeholder {
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    color: #777;
+    font-size: 0.9rem;
+}

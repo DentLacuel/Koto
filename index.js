@@ -1,10 +1,20 @@
-
 const express = require('express');
 const pool = require('./config/database');
 const supabase = require('./config/supabase');
+const listingsRoutes = require('./routes/listings');
+const cors = require('cors');
+
 const app = express();
 
+app.use(cors({
+    origin: 'http://127.0.0.1:5500'
+}));
+
+
 app.use(express.json());
+
+// Routes
+app.use('/api/listings', listingsRoutes);
 
 // Route d'accueil
 app.get('/', (req, res) => {

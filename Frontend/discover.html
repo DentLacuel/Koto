@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrir | Koto</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="discover.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Koto</a>
+
+            <button class="navbar-toggle" aria-label="Ouvrir le menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="discover.html" class="active">Découvrir</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">Comment ça marche</a></li>
+                <li><a href="create-listing.html">Publier une annonce</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="discover-container">
+
+        <header class="discover-header">
+            <h1>Découvrir</h1>
+            <p>Découvrez des articles près de chez vous.</p>
+        </header>
+
+        <section class="discover-filters">
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Rechercher un article..."
+            >
+
+            <select id="category-filter">
+                <option value="">Toutes les catégories</option>
+            </select>
+        </section>
+
+        <section>
+            <div id="listings-grid" class="listings-grid">
+                <p>Chargement des annonces...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="discover.js"></script>
+
+</body>
+</html>
