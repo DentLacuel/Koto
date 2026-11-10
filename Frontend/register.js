@@ -20,7 +20,7 @@ registerForm.addEventListener('submit', async (event) => {
             email: email,
             password: password,
            options: {
-                emailRedirectTo: 'http://127.0.0.1:5500/login.html',
+                emailRedirectTo: `${window.location.origin}/login.html`,
                     data: {
                         first_name: firstName,
                          last_name: lastName,
