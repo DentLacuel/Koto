@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte | Koto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="auth-container">
+        <h1>Créer un compte Koto</h1>
+        <p>Rejoignez la communauté Koto.</p>
+
+        <form id="register-form">
+
+            <label for="first-name">Prénom</label>
+            <input type="text" id="first-name" required>
+
+            <label for="last-name">Nom</label>
+            <input type="text" id="last-name" required>
+
+            <label for="email">Adresse courriel</label>
+            <input type="email" id="email" required>
+
+            <label for="university">Université (facultatif)</label>
+            <input type="text" id="university">
+
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" minlength="8" required>
+
+            <button type="submit">Créer mon compte</button>
+
+            <p id="register-message"></p>
+        </form>
+
+        <p>Déjà membre ? <a href="login.html">Se connecter</a></p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="register.js"></script>
+
+</body>
+</html>

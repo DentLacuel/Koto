@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('./config/database');
 const supabase = require('./config/supabase');
 const listingsRoutes = require('./routes/listings');
+const authentifier = require('./middleware/auth.middleware');
 const cors = require('cors');
 
 const app = express();
@@ -78,6 +79,16 @@ app.get('/api/storage-test', async (req, res) => {
             message: "Impossible d'accéder à Supabase Storage."
         });
     }
+});
+
+
+// Route de test : vérifier l'identité de l'utilisateur connecté
+app.get('/api/me', authentifier, (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Utilisateur authentifié.',
+        user: req.user
+    });
 });
 
 // Démarrage du serveur

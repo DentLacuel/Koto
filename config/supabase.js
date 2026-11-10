@@ -10,7 +10,7 @@ const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
 
 //Vérifier que les variables existent
 if (!supabaseUrl || !supabaseSecretKey){
-    throw new error(`Les variables Supabase n'existent pas dans .env`);
+    throw new Error(`Les variables d’environnement Supabase sont manquantes.`);
 }
 
 //Créer le client Supabase
