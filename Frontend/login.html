@@ -8,6 +8,27 @@
 </head>
 <body>
 
+     <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">Koto</a>
+
+            <button class="navbar-toggle" aria-label="Ouvrir le menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="discover.html">Découvrir</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">Comment ça marche</a></li>
+                <li><a href="create-listing.html">Publier une annonce</a></li>
+                <li><a href="login.html" class="active">Connexion</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <main class="auth-container">
         <h1>Connexion à Koto</h1>
         <p>Heureux de vous retrouver !</p>
@@ -31,6 +52,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="login.js"></script>
+
+    <!-- Scripts pour Hamburger-->
+    <script src="script.js"></script>
+    
 
 </body>
 </html>
