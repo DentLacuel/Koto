@@ -1,5 +1,6 @@
 
 const API_URL = 'https://koto-cjyf.onrender.com/api/listings';
+let toutesLesAnnonces = [];
 
 // Récupérer les annonces depuis l'API
 async function chargerAnnonces() {
@@ -12,9 +13,9 @@ async function chargerAnnonces() {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
 
-        const annonces = await response.json();
+       toutesLesAnnonces = await response.json();
 
-        afficherAnnonces(annonces);
+        afficherAnnonces(toutesLesAnnonces);
 
     } catch (error) {
         console.error('Erreur lors du chargement des annonces :', error);
@@ -75,5 +76,75 @@ function afficherAnnonces(annonces) {
     });
 }
 
+// Fonctionnalités barre de recherche
+function filtrerAnnonces() {
+    const recherche = document
+        .querySelector('#search-input')
+        .value
+        .trim()
+        .toLowerCase();
+
+    const categorieSelectionnee = document
+        .querySelector('#category-filter')
+        .value;
+
+    const annoncesFiltrees = toutesLesAnnonces.filter(annonce => {
+
+        const titreCorrespond =
+            annonce.title.toLowerCase().includes(recherche);
+
+        const categorieCorrespond =
+            categorieSelectionnee === '' ||
+            annonce.category_id.toString() === categorieSelectionnee;
+
+        return titreCorrespond && categorieCorrespond;
+    });
+
+    afficherAnnonces(annoncesFiltrees);
+}
+
+
+// Recuperation et filtrage par categorie depuis Supabase
+async function chargerCategories() {
+    const categoryFilter = document.querySelector('#category-filter');
+
+    try {
+        const response = await fetch(
+            'https://koto-cjyf.onrender.com/api/categories'
+        );
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const resultat = await response.json();
+
+        resultat.data.forEach(categorie => {
+            const option = document.createElement('option');
+
+            option.value = categorie.id;
+            option.textContent = categorie.name;
+
+            categoryFilter.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Erreur lors du chargement des catégories :', error);
+    }
+}
+
 // Charger les annonces au chargement de la page
 chargerAnnonces();
+
+// Charger les categories
+chargerCategories();
+
+// Ecouteur d'événement
+document
+    .querySelector('#search-input')
+    .addEventListener('input', filtrerAnnonces);
+
+// Ecouteur pour le menu déroulant
+document
+    .querySelector('#category-filter')
+    .addEventListener('change', filtrerAnnonces);
