@@ -24,6 +24,9 @@ loginForm.addEventListener('submit', async (event) => {
         }
 
         loginMessage.textContent = 'Connexion réussie !';
+        setTimeout(() => {
+            window.location.href = 'discover.html';
+                 }, 1000);
 
         console.log('Utilisateur connecté :', data.user);
 
