@@ -25,7 +25,8 @@ async function chargerAnnonces() {
     }
 }
 
-// Afficher les annonces dans la grille
+
+ // Afficher les annonces dans la grille
 function afficherAnnonces(annonces) {
     const listingsGrid = document.querySelector('#listings-grid');
 
@@ -43,10 +44,31 @@ function afficherAnnonces(annonces) {
         const card = document.createElement('article');
         card.classList.add('listing-card');
 
-        // Image temporaire
-        const image = document.createElement('div');
-        image.classList.add('listing-image-placeholder');
-        image.textContent = 'Photo à venir';
+        // Conteneur de l'image
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('listing-image-placeholder');
+
+        // Vérifier si l'annonce possède une photo
+        if (annonce.photos && annonce.photos.length > 0) {
+
+            const image = document.createElement('img');
+
+            image.src = annonce.photos[0].url;
+            image.alt = annonce.title;
+
+            image.classList.add('listing-image');
+
+            // Image de remplacement en cas d'erreur
+            image.addEventListener('error', () => {
+                imageContainer.innerHTML = '';
+                imageContainer.textContent = 'Photo indisponible';
+            }, { once: true });
+
+            imageContainer.appendChild(image);
+
+        } else {
+            imageContainer.textContent = 'Aucune photo';
+        }
 
         // Informations de l'annonce
         const info = document.createElement('div');
@@ -69,12 +91,13 @@ function afficherAnnonces(annonces) {
 
         // Assembler les éléments
         info.append(title, price, category, location);
-        card.append(image, info);
+        card.append(imageContainer, info);
 
         // Ajouter la carte à la grille
         listingsGrid.appendChild(card);
     });
 }
+
 
 // Fonctionnalités barre de recherche
 function filtrerAnnonces() {

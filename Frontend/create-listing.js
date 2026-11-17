@@ -93,7 +93,8 @@ function afficherApercuPhotos() {
 }
 
 
-// Publier une annonce
+
+// Publier une annonce avec ses photos
 async function publierAnnonce(event) {
 
     // Empêcher le rechargement de la page
@@ -101,8 +102,16 @@ async function publierAnnonce(event) {
 
     const formulaire = document.querySelector('#listing-form');
     const bouton = formulaire.querySelector('button[type="submit"]');
+    const photoInput = document.querySelector('#photos');
+
+    // Conserver les fichiers sélectionnés
+    const fichiers = Array.from(photoInput.files);
 
     try {
+
+        // Désactiver le bouton pendant toute l'opération
+        bouton.disabled = true;
+        bouton.textContent = 'Publication en cours...';
 
         // Vérifier la session Supabase
         const { data, error } =
@@ -134,11 +143,87 @@ async function publierAnnonce(event) {
             location: document.querySelector('#location').value.trim()
         };
 
-        // Désactiver le bouton pendant l'envoi
-        bouton.disabled = true;
-        bouton.textContent = 'Publication en cours...';
+        // Tableau contenant les chemins des photos téléversées
+        const photoPaths = [];
 
-        // Envoyer l'annonce au backend
+        // Préparer et téléverser les photos si nécessaire
+        if (fichiers.length > 0) {
+
+            // Préparer les métadonnées des fichiers
+            const fichiersInfo = fichiers.map(fichier => ({
+                contentType: fichier.type,
+                size: fichier.size
+            }));
+
+            // Demander les URL signées au backend
+            const responseUrls = await fetch(
+                `${API_URL}/api/listings/upload-urls`,
+                {
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${session.access_token}`
+                    },
+
+                    body: JSON.stringify({
+                        files: fichiersInfo
+                    })
+                }
+            );
+
+            const resultatUrls = await responseUrls.json();
+
+            if (!responseUrls.ok) {
+                throw new Error(
+                    resultatUrls.message ||
+                    'Impossible de préparer le téléversement des photos.'
+                );
+            }
+
+            // Vérifier que le backend a fourni une URL pour chaque photo
+            if (
+                !Array.isArray(resultatUrls.uploads) ||
+                resultatUrls.uploads.length !== fichiers.length
+            ) {
+                throw new Error(
+                    'Le nombre de photos préparées est incorrect.'
+                );
+            }
+
+            // Téléverser directement les photos vers Supabase Storage
+            for (let i = 0; i < fichiers.length; i++) {
+
+                const fichier = fichiers[i];
+                const upload = resultatUrls.uploads[i];
+
+                const { data: uploadData, error: uploadError } =
+                    await window.kotoSupabase.storage
+                        .from('koto-listings')
+                        .uploadToSignedUrl(
+                            upload.path,
+                            upload.token,
+                            fichier,
+                            {
+                                contentType: fichier.type
+                            }
+                        );
+
+                if (uploadError) {
+                    throw new Error(
+                        `Erreur lors du téléversement de la photo ${i + 1} : ${uploadError.message}`
+                    );
+                }
+
+                // Conserver le chemin retourné par Supabase
+                photoPaths.push(uploadData.path);
+            }
+        }
+
+        // Ajouter les chemins des photos à l'annonce
+        annonce.photo_paths = photoPaths;
+
+        // Envoyer l'annonce et ses photos au backend
         const response = await fetch(`${API_URL}/api/listings`, {
             method: 'POST',
 
@@ -181,6 +266,7 @@ async function publierAnnonce(event) {
         bouton.textContent = 'Publier l’annonce';
     }
 }
+
 
 
 // Écouteur pour la sélection des photos
