@@ -120,3 +120,198 @@
     color: #777;
     font-size: 0.9rem;
 }
+
+
+/* Carte extensible */
+.listing-card {
+    cursor: pointer;
+}
+
+/* État agrandi */
+.listing-card.expanded {
+    grid-column: span 1.5;
+}
+
+/* Détails cachés par défaut */
+.listing-details {
+    display: none;
+    padding: 0 16px 16px;
+}
+
+/* Afficher les détails lorsque la carte est agrandie */
+.listing-card.expanded .listing-details {
+    display: block;
+}
+
+/* Description */
+.listing-description {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    margin-top: 8px;
+}
+
+/* Nom du vendeur */
+.listing-seller {
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 12px;
+}
+
+/* Adaptation mobile */
+@media (max-width: 600px) {
+    .listing-card.expanded {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* Agrandir la photo sur mobile lorsque la carte est ouverte */
+@media (max-width: 700px) {
+    .listing-card.expanded .listing-image-placeholder {
+        height: 400px;
+    }
+
+    .listing-card.expanded .listing-image {
+        height: 100%;
+    }
+}
+
+/* Permettre le positionnement des commandes sur la photo */
+.listing-image-placeholder {
+    position: relative;
+}
+
+/* Photo entière dans la carte agrandie */
+.listing-card.expanded .listing-image {
+    object-fit: contain;
+}
+
+/* Commandes de la galerie */
+.listing-gallery-controls {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    gap: 18px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    z-index: 2;
+}
+
+/* Afficher les commandes uniquement lorsque la carte est ouverte */
+.listing-card.expanded .listing-gallery-controls {
+    display: flex;
+}
+
+.listing-gallery-controls button {
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.listing-photo-counter {
+    font-size: 0.85rem;
+    color: #333;
+    white-space: nowrap;
+}
+
+
+/* Fenêtre Lightbox */
+.photo-lightbox {
+    width: min(900px, 95vw);
+    max-width: 95vw;
+    max-height: 95vh;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: white;
+    overflow: visible;
+}
+
+/* Fond sombre derrière la fenêtre */
+.photo-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.88);
+}
+
+/* Contenu de la fenêtre */
+.lightbox-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 55px 20px 20px;
+    background: #171717;
+    border-radius: 12px;
+}
+
+/* Photo agrandie */
+#lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Bouton de fermeture */
+.lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Commandes de navigation */
+.lightbox-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.lightbox-controls button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#lightbox-counter {
+    font-size: 0.9rem;
+}
+
+/* Adaptation mobile */
+@media (max-width: 600px) {
+    .photo-lightbox {
+        width: 95vw;
+    }
+
+    .lightbox-content {
+        padding: 50px 10px 15px;
+    }
+
+    #lightbox-image {
+        max-height: 75vh;
+    }
+}
+
+/* Ajout de */
+.listing-card.expanded .listing-image {
+    cursor: zoom-in;
+}

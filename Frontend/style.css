@@ -9,7 +9,7 @@ background: url() no-repeat center center/cover;*/
 body {
     font-family: Verdana;
     min-height: 100vh;
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
     
 }
 
@@ -38,7 +38,7 @@ body {
 
 .navbar-logo {
     font-size: 2rem;
-    color: rgb(231, 183, 183);
+    color: rgb(240, 191, 191);
     text-decoration: none;
     cursor: pointer;
 }
@@ -64,17 +64,17 @@ body {
 /*  */
 .navbar-container .navbar-menu li a:hover,
 .navbar-container .navbar-menu li a.active {
-    color: rgb(10, 221, 254);
-    background: rgb(231, 183, 219);
-    border: 2px solid rgb(106, 18, 238);
+    color: rgb(0, 0, 0);
+    background: rgb(170, 170, 170);
+    border: 2px solid rgb(255, 255, 255);
 }
 
 /* Menu box*/
 .navbar-toggle {
     display: none; 
-    background: red;
-    padding: 10px;
-    border: none;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -83,7 +83,7 @@ body {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background: white;
+    background: rgb(112, 112, 112);
     transition: all 0.3s ease-in-out;
 }
 
@@ -95,7 +95,7 @@ body {
 
     .navbar-container .navbar-menu {
         display: none;
-        flex-direction: column;
+        flex-direction:column;
         align-items: flex-start;
         gap: 1.7rem !important;
         position: absolute;
@@ -159,3 +159,11 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/*
+.listing-description {
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.5;
+}*/

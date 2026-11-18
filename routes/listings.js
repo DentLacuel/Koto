@@ -118,12 +118,18 @@ router.get('/', async (req, res) => {
                 listings.location,
                 listings.created_at,
                 listing_photos.storage_path,
-                listing_photos.position
+                listing_photos.position,
+                CONCAT_WS(' ', users.first_name, users.last_name) AS seller_name
+
             FROM listings
             INNER JOIN categories
                 ON listings.category_id = categories.id
             LEFT JOIN listing_photos
                 ON listings.id = listing_photos.listing_id
+
+            LEFT JOIN users
+                ON listings.user_id = users.id
+
             ORDER BY
                 listings.created_at DESC,
                 listing_photos.position ASC`
@@ -137,6 +143,7 @@ router.get('/', async (req, res) => {
             if (!annoncesMap.has(row.id)) {
                 annoncesMap.set(row.id, {
                     id: row.id,
+                    seller_name: row.seller_name,
                     user_id: row.user_id,
                     category_id: row.category_id,
                     category_name: row.category_name,
