@@ -272,6 +272,7 @@ function afficherAnnonces(annonces) {
         location.classList.add('listing-location');
         location.textContent = annonce.location;
 
+
         info.append(title, price, category, location);
 
         // Conteneur des détails cachés initialement
