@@ -129,7 +129,7 @@
 
 /* État agrandi */
 .listing-card.expanded {
-    grid-column: span 1.5;
+    grid-column: span 1;
 }
 
 /* Détails cachés par défaut */
