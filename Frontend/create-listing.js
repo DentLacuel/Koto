@@ -1,5 +1,5 @@
 
-const API_URL = 'https://koto-cjyf.onrender.com';
+const API_URL = 'http://localhost:3000';
 
 // Récupérer les catégories depuis l'API
 async function chargerCategories() {
@@ -239,7 +239,7 @@ async function publierAnnonce(event) {
 
         if (!response.ok) {
             throw new Error(
-                resultat.message || 'Impossible de publier l’annonce.'
+                resultat.message || `Impossible de publier l'annonce.`
             );
         }
 
@@ -263,7 +263,7 @@ async function publierAnnonce(event) {
     } finally {
 
         bouton.disabled = false;
-        bouton.textContent = 'Publier l’annonce';
+        bouton.textContent = `Publier l'annonce`;
     }
 }
 
