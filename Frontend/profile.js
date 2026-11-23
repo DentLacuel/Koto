@@ -1,6 +1,6 @@
 // URL du backend
 // https://koto-cjyf.onrender.com - http://localhost:3000
-const API_BASE_URL = 'koto-cjyf.onrender.com';
+const API_BASE_URL = 'http://koto-cjyf.onrender.com';
 
 // Éléments HTML
 const profileStatus = document.querySelector('#profile-status');
