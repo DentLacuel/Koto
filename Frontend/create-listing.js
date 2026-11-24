@@ -1,5 +1,5 @@
 //koto-cjyf.onrender.com - localhost:3000'
-const API_URL = 'http://koto-cjyf.onrender.com';
+const API_URL = 'https://koto-cjyf.onrender.com';
 
 // Récupérer les catégories depuis l'API
 async function chargerCategories() {
