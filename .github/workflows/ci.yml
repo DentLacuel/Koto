@@ -9,6 +9,7 @@ on:
 
 jobs:
   test:
+    name: Tests backend
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +28,28 @@ jobs:
       - name: Exécuter les tests
         run: npm test
 
-      - name: Déployer sur Render
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  frontend-check:
+    name: Vérification frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Vérifier les fichiers essentiels
+        run: |
+          test -f Frontend/index.html
+          test -f Frontend/style.css
+
+  deploy:
+    name: Déploiement Render
+    needs: [test, frontend-check]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Déployer le backend
         run: curl --fail --silent --show-error -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
+      - name: Déployer le frontend
+        run: curl --fail --silent --show-error -X POST "${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK }}"
