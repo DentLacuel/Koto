@@ -7,13 +7,14 @@
     <title>Koto</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/png" href="/logo/koto-logo-01.png">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
 
-            <a href="index.html" class="navbar-logo">Koto</a>
+            <a href="index.html" class="navbar-logo">Koto-listing</a>
 
             <button class="navbar-toggle">
                 <span class="bar"></span>
@@ -25,21 +26,52 @@
                <!-- <li><a href="index.html" class="active">Accueil</a></li>-->
                 <li><a href="discover.html">Découvrir</a></li>
                 <li><a href="create-listing.html">Publier une annonce</a></li>
-                <li><a href="#comment-ca-marche">Comment ça marche</a></li>
+                <li><a href="howToUse.html">Comment ça marche</a></li>
                 <li><a href="profile.html">Profil</a></li>
                 <li><a href="login.html">Connexion</a></li>
             </ul>
-
         </div>
-    </nav>
+    </nav><br>
 
-    <h1>Bienvenue</h1>
+    <section class="hero">
+    <div class="hero-content">
 
+        <span class="hero-tag">La marketplace étudiante</span>
 
+        <h1>
+            Bienvenue sur <span>Koto-listing</span> !
+        </h1>
+
+        <h2>
+        Acheter, vendre et donner une seconde vie aux objets.
+        </h2>
+
+        <p>
+            Étudiant ou une personne qui accumule des objets au fil du temps : livres, materiel scolaire, vêtements, meubles, 
+            ou tout autre objet que je n'utilise plus.
+
+            Économise, vends ce dont tu ne te sers plus et encourage
+            la réutilisation des objets.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="discover.html" class="btn-primary">
+                Découvrir les annonces
+            </a>
+
+            <a href="create-listing.html" class="btn-secondary">
+                Publier une annonce
+            </a>
+        </div>
+
+    </div>
+</section>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-ui.js"></script>
     <script src="script.js"></script>
 </body>
+
+
 </html>

@@ -38,8 +38,10 @@ body {
 }
 
 .navbar-logo {
-    font-size: 2rem;
-    color: rgb(240, 191, 191);
+    font-weight: bold;
+    font-family: Verdana;
+    font-size: 1.5rem;
+    color: #524134;
     text-decoration: none;
     cursor: pointer;
 }
